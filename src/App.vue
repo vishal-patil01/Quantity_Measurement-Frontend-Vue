@@ -1,15 +1,17 @@
 <template>
   <div id="app">
     <AppHeader msg="Welcome to Quantity Measurement" />
+    <ChooseType msg="Choose Type" />
   </div>
 </template>
 
 <script>
 import AppHeader from "./components/AppHeader.vue";
+import ChooseType from "./components/ChooseType.vue";
 
 export default {
   name: "App",
-  components: { AppHeader },
+  components: { AppHeader, ChooseType },
 };
 </script>
 
