@@ -4,28 +4,13 @@
       <p>{{msg}}</p>
       <div class="units">
         <md-content
-          v-on:click="selectUnit('length','#0ec098','#edfdf9')"
-          id="length"
-          class="md-elevation-1"
+          v-for="(unit,index) in mainUnitsProperties"
+          :key="mainUnits[index]"
+          v-on:click="selectUnit(mainUnits[index],unit.primaryColor,unit.secondaryColor)"
+          :id="mainUnits[index]"
         >
-          <img src="../assets/scale.svg" />
-          <p>Length</p>
-        </md-content>
-        <md-content
-          v-on:click="selectUnit('temperature','#fd5160','#ffeef0')"
-          id="temperature"
-          class="md-elevation-2"
-        >
-          <img src="../assets/hot.svg" />
-          <p>Temperature</p>
-        </md-content>
-        <md-content
-          v-on:click="selectUnit('volume','#7224ff','#e8ddff')"
-          id="volume"
-          class="md-elevation-3"
-        >
-          <img src="../assets/beaker.svg" />
-          <p>Volume</p>
+          <img :src="require(`../assets/${unit.image}`)" />
+          <p>{{mainUnits[index]}}</p>
         </md-content>
       </div>
     </div>
@@ -41,15 +26,35 @@ export default {
   data: () => ({
     prevSelection: "",
     selected: "length",
+    mainUnits: ["length", "temperature", "volume"],
+    mainUnitsProperties: [
+      {
+        image: "scale.svg",
+        primaryColor: "#0ec098",
+        secondaryColor: "#edfdf9",
+      },
+      {
+        image: "hot.svg",
+        primaryColor: "#fd5160",
+        secondaryColor: "#ffeef0",
+      },
+      {
+        image: "beaker.svg",
+        primaryColor: "#7224ff",
+        secondaryColor: "#e8ddff",
+      },
+    ],
   }),
   methods: {
     selectUnit: function (className, primaryColor, secondaryColor) {
-      var cssproperty=document.getElementById(className).style;
+      var cssproperty = document.getElementById(className).style;
       if (this.prevSelection.length != 0) {
-        document.getElementById(this.prevSelection).setAttribute("style", "filter:grayscale()");
+        document
+          .getElementById(this.prevSelection)
+          .setAttribute("style", "");
       }
       cssproperty.filter = "none";
-      cssproperty.border ="1px solid " + primaryColor;
+      cssproperty.border = "1px solid " + primaryColor;
       cssproperty.color = primaryColor;
       cssproperty.backgroundColor = secondaryColor;
       this.prevSelection = className;
