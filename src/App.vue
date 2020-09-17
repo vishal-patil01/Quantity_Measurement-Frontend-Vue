@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <p>Welcome To Quantity Measurement</p>
+    <AppHeader msg="Welcome to Quantity Measurement" />
   </div>
 </template>
 
 <script>
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
   name: "App",
-  components: { },
+  components: { AppHeader },
 };
 </script>
 
