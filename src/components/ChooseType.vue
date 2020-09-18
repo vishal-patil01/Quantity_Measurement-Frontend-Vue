@@ -51,7 +51,7 @@ export default {
       if (this.prevSelection.length != 0) {
         document
           .getElementById(this.prevSelection)
-          .setAttribute("style", "");
+          .setAttribute("style", "filter:grayscale()");
       }
       cssproperty.filter = "none";
       cssproperty.border = "1px solid " + primaryColor;

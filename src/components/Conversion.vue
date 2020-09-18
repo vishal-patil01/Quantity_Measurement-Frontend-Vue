@@ -1,7 +1,7 @@
 <template>
   <div class="conversion-container">
     <div class="input-container">
-      <md-content>
+      <md-content class="md-elevation-1">
         <md-field>
           <label>Initial Value</label>
           <md-input v-model="initial1"></md-input>
@@ -10,7 +10,7 @@
           <label>Country</label>
         </md-autocomplete>
       </md-content>
-      <md-content>
+      <md-content class="md-elevation-2">
         <md-field>
           <label>Initial Value</label>
           <md-input v-model="initial2"></md-input>
