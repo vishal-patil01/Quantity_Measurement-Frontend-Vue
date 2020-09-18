@@ -44,6 +44,10 @@ export default {
     selectedFirstUnit: null,
     selectedSecondUnit: null,
   }),
+   mounted() {
+    this.selectedFirstUnit=this.subUnits[0],
+    this.selectedSecondUnit=this.subUnits[1]
+  },
 };
 </script>
 
@@ -99,5 +103,11 @@ export default {
   font-size: 28px !important;
   font-weight: bold;
   max-width: -webkit-fill-available;
+}
+@media (max-width: 982px) {
+  .input-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

@@ -48,10 +48,9 @@ export default {
   methods: {
     selectUnit: function (className, primaryColor, secondaryColor) {
       var cssproperty = document.getElementById(className).style;
+      console.log(this.selected);
       if (this.prevSelection.length != 0) {
-        document
-          .getElementById(this.prevSelection)
-          .setAttribute("style", "");
+        document.getElementById(this.prevSelection).setAttribute("style", "");
       }
       cssproperty.filter = "none";
       cssproperty.border = "1px solid " + primaryColor;
@@ -59,6 +58,13 @@ export default {
       cssproperty.backgroundColor = secondaryColor;
       this.prevSelection = className;
     },
+  },
+  mounted() {
+    this.selectUnit(
+      this.selected,
+      this.mainUnitsProperties[0].primaryColor,
+      this.mainUnitsProperties[0].secondaryColor
+    );
   },
 };
 </script>
@@ -126,18 +132,14 @@ p {
   font: normal normal bold 20px/24px Montserrat;
   text-transform: capitalize;
 }
-@media (max-width: 1053px)
-{
-.units-container {
-  padding: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-}
+
 .md-content > p {
   margin-top: 24px;
+}
+@media (max-width: 982px) {
+  .units {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>
