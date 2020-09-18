@@ -51,7 +51,7 @@ export default {
       if (this.prevSelection.length != 0) {
         document
           .getElementById(this.prevSelection)
-          .setAttribute("style", "filter:grayscale()");
+          .setAttribute("style", "");
       }
       cssproperty.filter = "none";
       cssproperty.border = "1px solid " + primaryColor;
@@ -126,7 +126,17 @@ p {
   font: normal normal bold 20px/24px Montserrat;
   text-transform: capitalize;
 }
-
+@media (max-width: 1053px)
+{
+.units-container {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+}
 .md-content > p {
   margin-top: 24px;
 }

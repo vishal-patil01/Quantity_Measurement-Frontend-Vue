@@ -1,24 +1,32 @@
 <template>
   <div class="conversion-container">
-    <div class="input-container">
-      <md-content class="md-elevation-1">
-        <md-field>
-          <label>Initial Value</label>
-          <md-input v-model="initial1"></md-input>
-        </md-field>
-        <md-autocomplete v-model="selectedFirstUnit" :md-options="subUnits">
-          <label>Country</label>
-        </md-autocomplete>
-      </md-content>
-      <md-content class="md-elevation-2">
-        <md-field>
-          <label>Initial Value</label>
-          <md-input v-model="initial2"></md-input>
-        </md-field>
-        <md-autocomplete v-model="selectedSecondUnit" :md-options="subUnits">
-          <label>Country</label>
-        </md-autocomplete>
-      </md-content>
+    <div class="column">
+      <div class="input-container">
+        <div class="column">
+          <div class="md-layout-item md-medium-size-33 md-small-size-50">From</div>
+          <md-content>
+            <md-field>
+              <label>Initial Value</label>
+              <md-input v-model="initial1"></md-input>
+            </md-field>
+            <md-autocomplete v-model="selectedFirstUnit" :md-options="subUnits">
+              <label>SubUnits</label>
+            </md-autocomplete>
+          </md-content>
+        </div>
+        <div class="column">
+          <div class="md-layout-item md-medium-size-33 md-small-size-50">To</div>
+          <md-content>
+            <md-field>
+              <label>Initial Value</label>
+              <md-input v-model="initial2"></md-input>
+            </md-field>
+            <md-autocomplete v-model="selectedSecondUnit" :md-options="subUnits">
+              <label>SubUnits</label>
+            </md-autocomplete>
+          </md-content>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -40,14 +48,30 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import "~vue-material/src/components/MdAnimation/variables.scss";
+@import "~vue-material/src/theme/engine";
+
+.md-layout-item {
+  margin: 0 27px !important;
+  transition: 0.3s $md-transition-stand-timing;
+  text-align: left;
+  font: normal normal medium 18px/22px Montserrat;
+  &:after {
+    display: block;
+  }
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  max-width: -webkit-fill-available;
+}
 .conversion-container {
   padding: 16px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  margin-top: 24px;
 }
 .input-container {
   display: flex;
@@ -55,15 +79,16 @@ export default {
   flex-direction: row;
 }
 .md-content {
-  width: 345px;
-  height: 113px;
-  margin: 24px;
+  width: fit-content;
+  height: 170px;
+  margin: 8px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   border-radius: 3px;
   padding: 12px 24px;
+  max-width: -webkit-fill-available;
 }
 .md-field {
   margin: 0;
@@ -73,5 +98,6 @@ export default {
 .md-input {
   font-size: 28px !important;
   font-weight: bold;
+  max-width: -webkit-fill-available;
 }
 </style>
