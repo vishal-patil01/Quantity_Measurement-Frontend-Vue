@@ -1,0 +1,23 @@
+@import "~vue-material/src/components/MdAnimation/variables.scss";
+@import "~vue-material/src/theme/engine";
+
+.md-layout-item {
+  margin        : 0 27px !important;
+  transition    : 0.3s $md-transition-stand-timing;
+  text-align    : left;
+  font          : normal normal normal 18px/22px Montserrat;
+  text-transform: uppercase;
+  opacity       : 0.62;
+
+  &:after {
+    display: block;
+  }
+}
+
+@mixin flex-box {
+  display        : flex;
+  justify-content: center;
+  align-items    : center;
+  flex-wrap      : wrap;
+}
+
