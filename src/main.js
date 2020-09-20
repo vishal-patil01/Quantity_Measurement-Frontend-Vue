@@ -9,7 +9,7 @@ import Style from './styles/style.scss'
 
 Vue.config.productionTip = false
 
-
+export const bus =new Vue()
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
@@ -18,6 +18,7 @@ Vue.use(Style)
 const router =new VueRouter({
    routes:Routes
 })
+
 new Vue({
   render: h => h(App),
   router:router
