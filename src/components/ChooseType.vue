@@ -7,8 +7,7 @@
           v-for="(unit,index) in mainUnitsProperties"
           :key="mainUnits[index]"
           v-on:click="selectUnit(mainUnits[index],unit.primaryColor,unit.secondaryColor)"
-          :id="mainUnits[index]"
-        >
+          :id="mainUnits[index]">
           <img v-bind:src="require(`../assets/${unit.image}`)" />
           <p>{{mainUnits[index]}}</p>
         </md-content>
@@ -30,7 +29,7 @@ export default {
   data: () => ({
     mainUnits: [],
     prevSelection: "",
-    selected: String,
+    selected: "",
     mainUnitsProperties: [
       {
         image: "scale.svg",
@@ -49,13 +48,12 @@ export default {
       },
     ],
   }),
-
   methods: {
-    fetchMainUnits: async function () {
-      await QuantityMeasurementService
-        .getMainUnits()
+    fetchMainUnits: function () {
+      QuantityMeasurementService.getMainUnits()
         .then((response) => {
           this.mainUnits = response.data;
+          bus.$emit("changedMainUnit", this.mainUnits[0]);
         })
         .catch((error) => {
           console.log(error);
@@ -74,8 +72,10 @@ export default {
       bus.$emit("changedMainUnit", selectedId);
     },
   },
-  async created() {
-    await this.fetchMainUnits();
+  created() {
+    this.fetchMainUnits();
+  },
+  updated() {
     this.selectUnit(
       this.mainUnits[0],
       this.mainUnitsProperties[0].primaryColor,
@@ -147,5 +147,11 @@ p {
 
 .md-content > p {
   margin-top: 24px;
+}
+
+@media (max-width: 852px) and (min-width: 595px) {
+  .units {
+    flex-direction: column;
+  }
 }
 </style>

@@ -33,8 +33,9 @@
               <option
                 class="option-box"
                 v-for="subUnit in subUnits"
-                v-bind:key="subUnit"
-              >{{subUnit}}</option>
+                v-bind:key="subUnit">
+                {{subUnit}}
+                </option>
             </select>
           </div>
         </div>
@@ -61,8 +62,8 @@ export default {
     selectedSecondUnit: null,
   }),
   methods: {
-    fetchSubUnits: async function (selectedMainUnit) {
-      await QuantityMeasurementService
+    fetchSubUnits: function (selectedMainUnit) {
+       QuantityMeasurementService
         .getSubUnit(selectedMainUnit)
         .then((response) => {
           this.subUnits = response.data;
@@ -71,8 +72,8 @@ export default {
           console.log(error);
         });
     },
-    changedFirstUnit: async function () {
-      await QuantityMeasurementService
+    changedFirstUnit: function () {
+       QuantityMeasurementService
         .getConvertedValue(
           this.secondTextValue,
           this.selectedSecondUnit,
@@ -85,8 +86,8 @@ export default {
           console.log(error);
         });
     },
-    changedSecondUnit: async function () {
-      await QuantityMeasurementService
+    changedSecondUnit: function () {
+       QuantityMeasurementService
         .getConvertedValue(
           this.firstTextValue,
           this.selectedFirstUnit,
