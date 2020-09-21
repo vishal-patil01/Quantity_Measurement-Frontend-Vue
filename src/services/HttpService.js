@@ -1,20 +1,17 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:8080/unit/';
-
 export default {
-
-    post(url, conversionDTO) {
+    post(url, postBody) {
         return axios({
             method: 'post',
-            url: `${baseUrl}${url}`,
-            data: conversionDTO,
+            url: `${process.env.VUE_APP_URL}${url}`,
+            data: postBody,
         })
     },
     get(url) {
         return axios({
             method: 'get',
-            url: `${baseUrl}${url}`,
+            url: `${process.env.VUE_APP_URL}${url}`,
         })
     }
 }
