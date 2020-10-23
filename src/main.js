@@ -12,18 +12,19 @@ import VueAxios from 'vue-axios'
 
 Vue.config.productionTip = false
 
-export const bus =new Vue()
+export const bus = new Vue()
 
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 Vue.use(Style)
 Vue.use(VueAxios, axios)
 
-const router =new VueRouter({
-   routes:Routes
+const router = new VueRouter({
+   mode: 'history',
+   routes: Routes
 })
 
 new Vue({
   render: h => h(App),
-  router:router
+  router: router
 }).$mount('#app')
